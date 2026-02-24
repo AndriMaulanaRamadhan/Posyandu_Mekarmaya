@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Redirect root to login page
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -29,3 +30,11 @@ Route::post('/penduduk', [App\Http\Controllers\DataPendudukController::class, 's
 //Route Edit Penduduk
 Route::get('/penduduk/{id}/edit', [App\Http\Controllers\DataPendudukController::class, 'edit'])->name('view_penduduk.edit');
 Route::put('/penduduk/{id}', [App\Http\Controllers\DataPendudukController::class, 'update'])->name('view_penduduk.update');
+
+// Route data balita
+Route::get('/balita', [App\Http\Controllers\DataBalitaController::class, 'index'])->name('view_balita');
+Route::delete('/balita/{id}', [App\Http\Controllers\DataBalitaController::class, 'destroy'])->name('view_balita.destroy');
+Route::get('/tambah_balita', [App\Http\Controllers\DataBalitaController::class, 'create'])->name('tambah_balita.create');
+Route::post('/balita', [App\Http\Controllers\DataBalitaController::class, 'store'])->name('view_balita.store');
+Route::get('/balita/{id}/edit', [App\Http\Controllers\DataBalitaController::class, 'edit'])->name('view_balita.edit');
+Route::put('/balita/{id}', [App\Http\Controllers\DataBalitaController::class, 'update'])->name('view_balita.update');

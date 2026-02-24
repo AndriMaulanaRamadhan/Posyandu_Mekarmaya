@@ -1,56 +1,62 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Halaman Login || Posyandu Mekarmaya</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-  </head>
-  <body>
-    <div class="container d-flex justify-content-center align-items-center">
-        <div class="card p-4 shadow" style="width: 400px;">
-           <div class="title-wrapper text-center mb-4">
-                <h3 class="app-title">
-                    Sistem Informasi Posyandu
-                </h3>
-            <div class="title-line"></div>
-                <p class="app-subtitle">
-                    Silakan login untuk mengelola data penduduk
-                </p>
-            </div>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login | Aplikasi Posyandu</title>
 
-            @if ($errors->any())
-                <div style="color:red;">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+<!-- css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+</head>
 
-            <form action="/login" method="POST">
-                @csrf
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder=" " required>
-                    <label class="form-label">Email Address</label>
-                </div>
+<body>
 
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder=" " required>
-                    <label class="form-label">Password</label>
-                </div>
+<div class="overlay-glow"></div>
 
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
+<div id="sakura-container"></div>
 
-            <p class="text-center mt-3">
-                Belum punya akun? <a href="/register">Daftar di sini</a>
-            </p>
-        </div>
+<div class="login-card">
+    <div class="login-header">
+        <h4>🍼 Aplikasi Posyandu</h4>
+        <small>Pendataan Ibu Hamil & Balita</small>
     </div>
+    <div class="login-body">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form action="/login" method="POST">
+            @csrf
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3 position-relative">
+                <input type="password" id="password" name="password" class="form-control password-input" placeholder="Password" required>
+                <button type="button" class="toggle-password" id="togglePassword">
+                    <i class="bi bi-eye-fill"></i>
+                </button>
+            </div>
+            <button type="submit" class="btn btn-login w-100">
+                Login
+            </button>
+        </form>
+        <p class="text-center mt-4">
+            Belum punya akun?
+            <a href="/register" style="color:#ff4d94;">Daftar sekarang</a>
+        </p>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+<!-- js -->
+<script src="{{ asset('js/login.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
