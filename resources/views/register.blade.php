@@ -19,7 +19,7 @@
 
 <div class="card">
     <div class="text-center mb-4">
-        <h3 class="app-title">🍼 Registrasi Posyandu</h3>
+        <h3 class="app-title">Registrasi Posyandu</h3>
         <div class="title-line"></div>
             <p class="text-muted">
                 Buat akun untuk mengelola data ibu & balita
@@ -44,12 +44,21 @@
             <input type="email" name="email" class="form-control" placeholder=" " required>
             <label class="form-label">Email</label>
         </div>
-        <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder=" " required>
+        <div class="form-group position-relative">
+            <input type="password" id="password" name="password"
+                class="form-control password-input"
+                placeholder=" " required>
             <label class="form-label">Password</label>
+            <button type="button" class="toggle-password" id="togglePassword">
+                <i class="bi bi-eye-fill"></i>
+            </button>
         </div>
-        <div class="form-group">
-            <input type="password" name="password_confirmation" class="form-control" placeholder=" " required>
+
+        <div class="form-group position-relative">
+            <input type="password" id="confirmPassword"
+                name="password_confirmation"
+                class="form-control password-input"
+                placeholder=" " required>
             <label class="form-label">Konfirmasi Password</label>
         </div>
         <button type="submit" class="btn btn-primary">Daftar</button>

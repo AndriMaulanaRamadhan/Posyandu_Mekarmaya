@@ -1,104 +1,93 @@
+:root {
+    --medical-blue: #2D9CDB;
+    --health-green: #27AE60;
+    --maternal-pink: #FF6FA5;
+}
+
+/* ================= BACKGROUND ================= */
 body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    position: relative;
+    background: linear-gradient(135deg, #FFE6F2, #EAF6FF, #F4FFFA);
+    background-size: 300% 300%;
+    animation: gradientMove 20s ease infinite;
 }
 
-/* Animated Pink Gradient */
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-        #ffd6e8,
-        #ffb3d9,
-        #ff8fc7,
-        #ffc2e2,
-        #ffe6f3
-    );
-    background-size: 400% 400%;
-    animation: gradientFlow 20s ease infinite;
-    z-index: -3;
-}
-
-@keyframes gradientFlow {
+@keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Soft glow overlay */
-.overlay-glow {
+/* Soft abstract blur shapes */
+body::before,
+body::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4), transparent 60%);
-    z-index: -2;
-}
-
-/* Sakura container */
-#sakura-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.5;
     z-index: -1;
-    overflow: hidden;
 }
 
-.sakura {
-    position: absolute;
-    top: -50px;
-    font-size: 18px;
-    opacity: 0.6;
-    animation: fall linear infinite;
+body::before {
+    width: 350px;
+    height: 350px;
+    background: var(--medical-blue);
+    top: -100px;
+    left: -100px;
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh) rotate(0deg);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-    }
+body::after {
+    width: 400px;
+    height: 400px;
+    background: var(--maternal-pink);
+    bottom: -120px;
+    right: -120px;
 }
 
-/* Glass Card */
+/* ================= CARD ================= */
 .card {
     width: 440px;
     padding: 40px 35px;
-    border-radius: 30px;
-    backdrop-filter: blur(25px);
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    backdrop-filter: blur(10px);
     animation: fadeUp 0.8s ease;
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* ================= TITLE ================= */
 .app-title {
-    font-weight: 700;
-    font-size: 20px;
-    background: linear-gradient(90deg, #ff5fa2, #ff9ec7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    color: var(--medical-blue);
 }
 
 .title-line {
-    width: 50px;
+    width: 60px;
     height: 3px;
-    margin: 8px auto;
+    margin: 10px auto;
     border-radius: 5px;
-    background: linear-gradient(90deg, #ff5fa2, #ff9ec7);
+    background: linear-gradient(90deg, var(--medical-blue), var(--maternal-pink));
 }
 
-/* Floating label */
+/* ================= FLOATING LABEL ================= */
 .form-group {
     position: relative;
     margin-bottom: 25px;
@@ -106,54 +95,75 @@ body::before {
 
 .form-control {
     width: 100%;
-    padding: 12px 15px;
+    padding: 12px 18px;
     border-radius: 50px;
-    border: 1px solid #eee;
-    transition: 0.3s;
+    border: 1px solid #e6eef5;
+    transition: 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #ff5fa2;
-    box-shadow: 0 0 15px rgba(255,95,162,0.25);
+    border-color: var(--medical-blue);
+    box-shadow: 0 0 0 3px rgba(45,156,219,0.15);
 }
 
 .form-label {
     position: absolute;
     top: 12px;
-    left: 20px;
+    left: 18px;
     font-size: 14px;
-    color: #777;
+    color: #888;
     pointer-events: none;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .form-control:focus + .form-label,
 .form-control:not(:placeholder-shown) + .form-label {
     top: -8px;
-    left: 15px;
+    left: 14px;
     font-size: 11px;
     background: white;
-    padding: 2px 8px;
+    padding: 0 6px;
     border-radius: 6px;
 }
 
-/* Button */
+/* ================= BUTTON ================= */
 .btn-primary {
     width: 100%;
     padding: 12px;
     border-radius: 50px;
+    background: linear-gradient(135deg, var(--health-green), #5fd38d);
     border: none;
     font-weight: 600;
-    background: linear-gradient(135deg, #28a745, #5fd38d);
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(40,167,69,0.25);
+    box-shadow: 0 10px 25px rgba(39,174,96,0.25);
 }
 
+/* ================= LINK ================= */
 a {
-    color: #ff4d94;
+    color: var(--medical-blue);
     font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--maternal-pink);
+}
+
+.password-input {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 18px;
+    top: 8px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--medical-blue);
+    cursor: pointer;
 }

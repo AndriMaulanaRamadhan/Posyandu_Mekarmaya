@@ -19,7 +19,7 @@
 
 <div class="login-card">
     <div class="login-header">
-        <h4>🍼 Aplikasi Posyandu</h4>
+        <h4>Aplikasi Posyandu</h4>
         <small>Pendataan Ibu Hamil & Balita</small>
     </div>
     <div class="login-body">
