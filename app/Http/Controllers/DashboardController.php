@@ -2,39 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Login;
+use App\Dashboard;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class DashboardController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('login');
-    }
-
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-        ]);
-        if (auth()->attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
-        }
-        return back()->withErrors([
-            'username' => 'Login Gagal',
-        ])->onlyInput('username');
-    }
-
-    // method logout
-    public function logout(Request $request)
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/login');
+        return view('dashboard');
     }
 
     /**
@@ -61,10 +41,10 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Login  $login
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(Login $login)
+    public function show(Dashboard $dashboard)
     {
         //
     }
@@ -72,10 +52,10 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Login  $login
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(Login $login)
+    public function edit(Dashboard $dashboard)
     {
         //
     }
@@ -84,10 +64,10 @@ class LoginController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Login  $login
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Login $login)
+    public function update(Request $request, Dashboard $dashboard)
     {
         //
     }
@@ -95,10 +75,10 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Login  $login
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Login $login)
+    public function destroy(Dashboard $dashboard)
     {
         //
     }
