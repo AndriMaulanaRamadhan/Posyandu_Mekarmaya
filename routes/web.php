@@ -16,6 +16,16 @@ Route::post('/logout', [App\Http\Controllers\LoginController::class, 'logout'])-
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register');
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register.store');
 
+// Route Dashboard
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+// Route Data Bayi
+Route::get('/bayi', [App\Http\Controllers\DataBayiController::class, 'index'])->name('view_bayi');
+Route::delete('/bayi/{id}', [App\Http\Controllers\DataBayiController::class, 'destroy'])->name('view_bayi.destroy');
+Route::get('/tambah_bayi', [App\Http\Controllers\DataBayiController::class, 'create'])->name('tambah_bayi.create');
+Route::post('/bayi', [App\Http\Controllers\DataBayiController::class, 'store'])->name('view_bayi.store');
+Route::get('/bayi/{id}/edit', [App\Http\Controllers\DataBayiController::class, 'edit'])->name('view_bayi.edit');
+Route::put('/bayi/{id}', [App\Http\Controllers\DataBayiController::class, 'update'])->name('view_bayi.update');
 
 
 Route::get('/penduduk', [App\Http\Controllers\DataPendudukController::class, 'index'])->name('view_penduduk');

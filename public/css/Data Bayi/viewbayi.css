@@ -1,0 +1,11 @@
+.custom-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.custom-table th,
+.custom-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
